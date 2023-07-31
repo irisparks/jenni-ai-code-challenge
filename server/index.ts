@@ -1,8 +1,9 @@
-const express = require("express");
+import express from "express";
+import http from "http";
+import { Server, Socket } from "socket.io";
+import cors from "cors";
+
 const app = express();
-const http = require("http");
-const { Server } = require("socket.io");
-const cors = require("cors");
 const port = 3001;
 
 app.use(cors());
@@ -16,10 +17,10 @@ const io = new Server(server, {
   },
 });
 
-io.on("connection", (socket) => {
+io.on("connection", (socket: Socket) => {
   console.log(`User Connected: ${socket.id}`);
 
-  socket.on("message", (updatedText) => {
+  socket.on("message", (updatedText: string) => {
     socket.broadcast.emit('message', updatedText);
   });
   socket.on("disconnect", () => {
