@@ -1,6 +1,7 @@
 import "./App.css";
 import io from "socket.io-client";
 import { useEffect, useState } from "react";
+import TextEditor from "./TextEditor";
 
 const socket = io.connect("http://localhost:3001");
 
@@ -28,7 +29,7 @@ function App() {
 
     <div>
       <h1>Real-time Collaborative Text Editor</h1>
-      <textarea value={text} onChange={handleTextChange} />
+      <TextEditor text={text} handleTextChange={handleTextChange}/>
     </div>
   );
 }
