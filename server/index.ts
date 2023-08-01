@@ -20,6 +20,17 @@ const io = new Server(server, {
 io.on("connection", (socket: Socket) => {
   console.log(`User Connected: ${socket.id}`);
 
+  socket.on("text", (updatedText: string) => {
+    socket.broadcast.emit('text', updatedText);
+  });
+  socket.on("disconnect", () => {
+    console.log(`User Disconnected: ${socket.id}`)
+  })
+});
+
+io.on("connection", (socket: Socket) => {
+  console.log(`User Connected: ${socket.id}`);
+
   socket.on("message", (updatedText: string) => {
     socket.broadcast.emit('message', updatedText);
   });

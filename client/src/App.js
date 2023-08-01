@@ -1,15 +1,14 @@
 import React, { useState, useEffect} from "react";
 import io from "socket.io-client";
-import TextEditor from "./TextEditor";
 
 const socket = io.connect("http://localhost:3001");
 
 function App() {
-  const [text, setText] = useState("");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
-    socket.on('message', (updatedText) => {
-      setText(updatedText);
+    socket.on('message', (updatedMessage) => {
+      setMessage(updatedMessage);
     });
 
     return () => {
@@ -18,17 +17,16 @@ function App() {
   }, [])
 
   const handleTextChange = (event) => {
-    const updatedText = event.target.value;
-    setText(updatedText);
+    const updatedMessage = event.target.value;
+    setMessage(updatedMessage);
 
-    socket.emit("message", updatedText);
+    socket.emit("message", updatedMessage);
   };
 
   return (
     <>
       <h1>Real-time Collaborative Text Editor</h1>
-      <textarea value={text} onChange={handleTextChange} />
-      <TextEditor />
+      <textarea id="text" name="text" rows="18" value={message} onChange={handleTextChange} />
     </>
   );
 }
