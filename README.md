@@ -33,7 +33,6 @@ cd client
 npm install
 cd ../server
 npm install
-testing
 ```
 
 ### Running the App
