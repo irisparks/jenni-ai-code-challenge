@@ -17,13 +17,13 @@ Make sure you have the following installed on your system:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/irisparks/jenni-ai-code-challenge.git
+git clone https://github.com/irisparks/real-time-collaborative-text-editor.git
 ```
 
 2. Change into the project directory:
 
 ```bash
-cd jenni-ai-code-challenge
+cd real-time-collaborative-text-editor
 ```
 
 3. Install the frontend and backend dependencies:
@@ -33,6 +33,7 @@ cd client
 npm install
 cd ../server
 npm install
+testing
 ```
 
 ### Running the App
